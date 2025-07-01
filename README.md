@@ -41,7 +41,7 @@ Desenvolver um sistema web que:
 
 - Comunicação entre frontend e backend via **binding de componentes para beans (EL)**.
 - Projeto construído com **Maven**.
-- Compatível com o servidor **WildFly 10**.
+- Compatível com o servidor **WildFly 10**, porem desenvolvido e testado no wildfly 17
 - Navegadores compatíveis: **Google Chrome** e **Microsoft Edge**.
 
 ## 💻 Tecnologias Utilizadas
@@ -74,7 +74,7 @@ mvn clean install
 
 ### 4. Implantar no WildFly
 
-- Copie o arquivo `.war` gerado para a pasta `standalone/deployments/` do WildFly 10.
+- Copie o arquivo `.war` gerado para a pasta `standalone/deployments/` do WildFly 10 ou envia o arquivo via interface na porta 9990.
 
 ### 5. Acessar a aplicação
 
@@ -106,9 +106,8 @@ Saída:
 src/
  └── main/
      ├── java/
-     │    └── br/com/prover/
-     │         └── controller/
-     │         └── service/
+         └── br/com/adamis/exemplo
+                └──IndexMB.java	 
      ├── resources/
      └── webapp/
           ├── index.xhtml

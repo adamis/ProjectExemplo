@@ -4,49 +4,67 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-	<title>Form Responsivo PrimeFaces</title>
-	<h:outputStylesheet library="primeflex" name="primeflex.css"
-		href="https://unpkg.com/primeflex@3.2.1/primeflex.css" />
-	<style>
-</style>
-</h:head>
+	<h:head>
+		<title>Form Responsivo PrimeFaces</title>
+		<h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
+	</h:head>
 
-<h:body>
+	<h:body>
+		<p:growl id="msgs" showDetail="true" />
 
+		<p:panel header="Analisador">
 
+			<h:form>
 
-	<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+				<div class="card">
+					<div class="grid formgrid">
 
-	<p:panel header="Analisador" footer="#{indexMB.result}">
+						<div class="field sm:col-8 md:col-12 lg:col-8 col-8 "
+							style="margin-top: 8px;">
 
-		<h:form>
+							<!-- Coluna do inputText -->
+							<span class="ui-float-label"> <p:inputText
+									id="float-input" value="#{indexMB.entrada}" styleClass="w-full" />
+								<p:outputLabel for="float-input" value="Escreva a frase aqui" />
+							</span>
 
-			<div class="card" style="background-color: red">
-				<div class="grid formgrid">
+						</div>
 
-					<div class="field col-12 md:col-12 w-full" style="margin-top: 5px; background-color: blue">
-						<!-- Coluna do inputText -->
-						<span class="ui-float-label"> <p:inputText id="float-input"
-								value="#{indexMB.entrada}" styleClass="w-full" /> <p:outputLabel
-								for="@previous" value="Escreva a frase aqui" />
-						</span>
+						<!-- Coluna do botão -->
+						<div class="field sm:col-8 md:col-8 lg:col-8 col-8"
+							style="margin-top: 5px">
+							<p:commandButton value="Analisar" icon="pi pi-search"
+								action="#{indexMB.click()}" update="msgs dlgAnalise"
+								oncomplete="dlgAnalise" />
+						</div>
+
 					</div>
-
-					<!-- Coluna do botão -->
-					<div class="col-12 md:col-3" style="margin-top: 5px">
-						<p:commandButton value="Analisar" icon="pi pi-search"
-							action="#{indexMB.click}" update="msgs" />
-					</div>
-
 				</div>
-			</div>
 
-		</h:form>
+			</h:form>
 
-	</p:panel>
+		</p:panel>
 
+		<p:dialog id="dlgAnalise" header="Resultado" widgetVar="dlgAnalise"
+			minHeight="60" width="600" showEffect="fade" modal="true"
+			closeOnEscape="true">
 
+			<h5>Quantidade de Palavras: #{indexMB.qtdPalavras}</h5>
 
-</h:body>
+			<p:dataTable value="#{indexMB.dadosList}" var="item" scrollable="true" scrollHeight="400">
+
+				<p:column headerText="Palavra">
+					<h:outputText value="#{item.key}" />
+				</p:column>
+
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{item.value}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</p:dialog>
+
+	</h:body>
+
 </html>

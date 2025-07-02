@@ -52,7 +52,7 @@ Desenvolver um sistema web que:
 | View         | JSF 2.x                     |
 | UI Components| PrimeFaces (ou RichFaces)   |
 | Build Tool   | Maven                       |
-| Servidor     | WildFly 10                  |
+| Servidor     | WildFly 10+                  |
 
 ## 🚀 Como Executar o Projeto
 
@@ -74,7 +74,7 @@ mvn clean install
 
 ### 4. Implantar no WildFly
 
-- Copie o arquivo `.war` gerado para a pasta `standalone/deployments/` do WildFly 10 ou envia o arquivo via interface na porta 9990.
+- Copie o arquivo `.war` gerado para a pasta `standalone/deployments/` do WildFly 10+ ou envia o arquivo via interface na porta 9990.
 
 ### 5. Acessar a aplicação
 
